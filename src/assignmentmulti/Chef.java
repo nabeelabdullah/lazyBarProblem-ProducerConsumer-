@@ -23,9 +23,9 @@ public class Chef extends Thread {
     File file;
 
     Chef(File file) {
-        
+
         this.file = file;
-        
+
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Chef extends Thread {
 
             Calendar cal = Calendar.getInstance();
 
-            String time = cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND) + "" + (cal.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
+            String time = (cal.get(Calendar.HOUR) < 10 ? "0" + cal.get(Calendar.HOUR) : cal.get(Calendar.HOUR)) + ":" + (cal.get(Calendar.MINUTE) < 10 ? "0" + cal.get(Calendar.MINUTE) : cal.get(Calendar.MINUTE)) + ":" + (cal.get(Calendar.SECOND) < 10 ? "0" + cal.get(Calendar.SECOND) : cal.get(Calendar.SECOND)) + " " + (cal.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
 
             writeIntoFile("Chef:Picked up ORD" + order.getOrderId() + " at " + time);
 
@@ -75,7 +75,7 @@ public class Chef extends Thread {
 
                 cal = Calendar.getInstance();
 
-                time = cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND) + "" + (cal.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
+                time = (cal.get(Calendar.HOUR) < 10 ? "0" + cal.get(Calendar.HOUR) : cal.get(Calendar.HOUR)) + ":" + (cal.get(Calendar.MINUTE) < 10 ? "0" + cal.get(Calendar.MINUTE) : cal.get(Calendar.MINUTE)) + ":" + (cal.get(Calendar.SECOND) < 10 ? "0" + cal.get(Calendar.SECOND) : cal.get(Calendar.SECOND)) + " " + (cal.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
 
                 writeIntoFile("Chef:Finished making " + menu.getMenuName() + " for ORD" + order.getOrderId() + " at " + time);
 
@@ -96,7 +96,6 @@ public class Chef extends Thread {
     public void writeIntoFile(String element) {
 
         //File file = new File("/home/zishan/Pictures/amit/OrderProcessed.txt");
-
         try {
 
             FileWriter fileWritter = new FileWriter(file, true);

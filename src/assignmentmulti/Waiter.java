@@ -18,7 +18,7 @@ public class Waiter extends Thread {
 
     Set<MenuBase> menuSet;
 
-    int number = 0;
+    int number = 1;
 
     Waiter(Set<MenuBase> menuSet) {
 
@@ -50,14 +50,18 @@ public class Waiter extends Thread {
 
                     queue.push(order);
 
-                    System.out.println("OrderNumber:ORD" + (number++) + " for " + menu.getMenuName() + " has been placed at " + Calendar.getInstance().getTime());
+                    Calendar cal = Calendar.getInstance();
+
+                    String time = (cal.get(Calendar.HOUR) < 10 ? "0" + cal.get(Calendar.HOUR) : cal.get(Calendar.HOUR)) + ":" + (cal.get(Calendar.MINUTE) < 10 ? "0" + cal.get(Calendar.MINUTE) : cal.get(Calendar.MINUTE)) + ":" + (cal.get(Calendar.SECOND) < 10 ? "0" + cal.get(Calendar.SECOND) : cal.get(Calendar.SECOND)) + " " + (cal.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
+
+                    System.out.println("OrderNumber:ORD" + (number++) + " for " + menu.getMenuName() + " has been placed at " + time);
 
                     synchronized (Locker.locker) {
 
                         Locker.locker.notify();
 
                     }
-                    
+
                     break;
                 }
 
