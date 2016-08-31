@@ -30,13 +30,19 @@ public class main {
 
         Set set = new HashSet();
 
-        MenuBase m1 = new MenuBase(1, "Sandwich", 3);
+        /**
+         * 
+         * MenuBase(Id,name,time);
+         *
+         *
+         */
+        MenuBase m1 = new MenuBase(1, "Sandwich", 5);
 
-        MenuBase m2 = new MenuBase(2, "Coffee", 2);
+        MenuBase m2 = new MenuBase(2, "Coffee", 3);
 
-        MenuBase m3 = new MenuBase(3, "Cereal", 1);
+        MenuBase m3 = new MenuBase(3, "Cereal", 3);
 
-        MenuBase m4 = new MenuBase(4, "Pizza", 5);
+        MenuBase m4 = new MenuBase(4, "Pizza", 7);
 
         set.add(m1);
 
